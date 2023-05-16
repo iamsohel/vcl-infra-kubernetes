@@ -5,14 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: dockersrana/ms1
+  repository: dockersrana/ms2
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2
+  tag: 3
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: micro-service-1-depl
+fullnameOverride: micro-service-2-depl
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -39,8 +39,8 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 4000
-  name: micro-service-1
-  metadataName: micro-service-1-srv
+  name: micro-service-2
+  metadataName: micro-service-2-srv
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
