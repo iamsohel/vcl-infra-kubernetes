@@ -24,3 +24,34 @@ spec:
             name: micro-service-2-srv
             port: 
               number: 4000
+  - host: prometheus.dev 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-server
+            port: 
+              number: 80
+  - host: grafana.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port: 
+              number: 3000
+  - host: loki-grafana.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: loki
+            port: 
+              number: 3100
+      
