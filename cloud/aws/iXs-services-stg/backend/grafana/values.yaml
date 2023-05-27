@@ -1,4 +1,0 @@
-minio:
-  enabled: true
-promtail:
-  enable: true
