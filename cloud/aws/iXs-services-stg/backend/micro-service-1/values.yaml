@@ -8,7 +8,7 @@ image:
   repository: dockersrana/ms1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2
+  tag: 5
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 4000
+  port: 4001
   name: micro-service-1
   metadataName: micro-service-1-srv
 

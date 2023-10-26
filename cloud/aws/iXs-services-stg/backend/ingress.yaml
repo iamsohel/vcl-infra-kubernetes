@@ -10,20 +10,13 @@ spec:
   - host: ms1-helm.dev
     http:
       paths:
-      - path: /api/ms1
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: micro-service-1-srv
             port: 
-              number: 4000
-      - path: /api/ms2
-        pathType: Prefix
-        backend:
-          service:
-            name: micro-service-2-srv
-            port: 
-              number: 4000
+              number: 4001
   - host: prometheus.dev
     http:
       paths:
@@ -31,9 +24,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prometheus-server
+            name: prometheus-kube-prometheus-prometheus
             port: 
-              number: 80
+              number: 9090
   - host: grafana.dev
     http:
       paths:
@@ -41,40 +34,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: grafana
+            name: prometheus-grafana
             port: 
-              number: 3000
-  - host: loki-grafana.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: loki
-            port: 
-              number: 3100
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argocd-server-ingress
-  namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-spec:
-  ingressClassName: "nginx"
-  rules:
-  - host: argocd.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              name: http
+              number: 80
+
 
       
